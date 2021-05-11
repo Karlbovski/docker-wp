@@ -1,8 +1,8 @@
 # Docker Wordpress Starter
 
-Simple development environment for Wordpress.
+**Docker-Compose** file to spin a development environment for Wordpress.
 
-## Stack docker images
+## Stack - Docker hub images
 - [Wordpress:latest](https://github.com/docker-library/wordpress/blob/394c79eafd5b345514f87cec590577e641c030ef/latest/php7.4/apache/Dockerfile)
   - php7.4
   - Apache
@@ -12,6 +12,11 @@ Simple development environment for Wordpress.
 - Create dedicated volumes for dev/production and use them in the `docker-compose` file.
 
 - run `docker-compose up -d`
+
+## Next (future improvements)
+- Editable `.htaccess` file
+- Editable apache `httpd.conf` file
+- Add SSL certificates for local dev
 
 ## Resources
 [Docker Docs](https://docs.docker.com/)
