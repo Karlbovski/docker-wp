@@ -3,6 +3,7 @@ version: "3.9"
 services:
   db:
     image: mysql:5.7
+    command: --max_allowed_packet=32505856
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -17,17 +18,33 @@ services:
       - db
     image: wordpress:latest
     ports:
-      - "8000:80"
+      - "80:80"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
     volumes:
-      - wordpress:/var/www/html
+      - wp_html:/var/www/html
+
+  phpmyadmin:
+    depends_on: 
+      - db
+    image: phpmyadmin:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment: 
+      - PMA_HOST=db
+      - PMA_ARBITRARY=1 
+      - PMA_USER=wordpress
+      - PMA_PASSWORD=wordpress
+
 volumes:
-  wordpress:
-  db_data: {}
-
-
+  wp_html:
+    external: true
+    name: docker-wordpress-starter_wordpress
+  db_data:
+    external: true
+    name: docker-wordpress-starter_db_data
