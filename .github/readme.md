@@ -7,6 +7,7 @@
   - php7.4
   - Apache
 - [MySql 5.7](https://github.com/docker-library/mysql/blob/b11f06b0d202e7b0f97b000e158fc4fc869d2194/5.7/Dockerfile.debian)
+- [PHPMyAdmin:latest](https://github.com/phpmyadmin/docker/blob/3d8c2ba403fa091a19c6f16762d50663e57f8969/apache/Dockerfile)
 
 ## Usage
 - Copy the `docker-compose.yml` file inside the current working/project directory
