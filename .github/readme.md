@@ -48,7 +48,7 @@ volumes:
     external: true
     name: docker-wordpress-starter_db_data
 ```
-or if we want to generate **docker compose** allows us to do so :
+If we want to just expose volumes and make them available by all services:
 ```yml
 volumes:
   wp_html:
@@ -56,8 +56,9 @@ volumes:
 ```
 - run `docker-compose up -d`
 
-## Next (future improvements)
+## Next (features and issues)
 - ~~Add PHPMyAdmin~~
+- Issue with Network. Has no Internet access.
 - Wordpress Database volume backup and Restore
 - Wordpress files volume backup and Restore
 - Editable configs files (`.htaccess` apache `httpd.conf`, etc...)
@@ -77,7 +78,9 @@ volumes:
 
 ### 2. MySql doesn't allow to upload packets bigger than 4MB
 This was causing an issue with the wpvivid-backup plugin preventing me to upload backups.
-> SOLVED - In Docker Compose we can pass commands to the mysql service-container we are building:
+> SOLVED 
+
+> In Docker Compose we can also pass commands directly to the mysql service-container we are building:
 ```yml
 ...
 services:
